@@ -5,8 +5,9 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(page_title="Interview Concepts Analysis", layout="wide")
 
-st.title("📊 Interview Concepts Analysis")
-st.markdown("Upload a CSV file to visualize concept collection over interviews")
+st.title("Visualizing Concept Saturation Over Interviews")
+st.markdown("This web application visualizes the number of concepts collected from interviews. Researchers can upload their data in CSV format to see how concepts accumulate over the course of interviews to decide whether they reached **concept saturation**, that is, the amount of new concept gained from new interviews become few.")
+st.markdown("Upload a CSV file to visualize concept collection over interviews. The CSV file should have at least three columns: *Interview_Number*, *Concepts_Collected*, and *New_Concepts*.")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -68,13 +69,18 @@ if uploaded_file is not None:
                 ),
                 secondary_y=True,
             )
-            
+           
+            # Calculate the maximum value from both datasets to set same range for both y-axes
+            max_cumulative = df['Cumulative_Unique_Concepts'].max()
+            max_per_interview = df['Concepts_Collected'].max()
+            y_max = max(max_cumulative, max_per_interview) * 1.1  # Add 10% padding
+
             # Set x-axis title
             fig.update_xaxes(title_text="Interview Number")
             
             # Set y-axes titles
-            fig.update_yaxes(title_text="Cumulative Unique Concepts", secondary_y=False)
-            fig.update_yaxes(title_text="Concepts per Interview", secondary_y=True)
+            fig.update_yaxes(title_text="Cumulative Unique Concepts", secondary_y=False, range=[0, y_max])
+            fig.update_yaxes(title_text="Concepts per Interview", secondary_y=True, range=[0, y_max])
             
             # Update layout
             fig.update_layout(
