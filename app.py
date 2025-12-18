@@ -5,9 +5,9 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(page_title="Interview Themes Analysis", layout="wide")
 
-st.title("Visualizing Concept Saturation Over Interviews")
-st.markdown("This web application visualizes the number of themes collected from interviews. Researchers can upload their data in CSV format to see how Themes accumulate over the course of interviews to decide whether they reached **concept saturation**, that is, the amount of new Themes gained from new interviews becomes few.")
-st.markdown("Upload a CSV file to visualize concept collection over interviews. The CSV file should have at least three columns: *Interview_Number*, *Themes_Collected*, and *New_Themes*.")
+st.title("Visualizing Theme Saturation Over Interviews")
+st.markdown("This web application visualizes the number of Themes collected from interviews. Researchers can upload their data in CSV format to see how Themes accumulate over the course of interviews to decide whether they reached **theme saturation**, that is, the amount of new Themes gained from new interviews becomes few.")
+st.markdown("Upload a CSV file to visualize theme collection over interviews. The CSV file should have at least three columns: *Interview_Number*, *Themes_Collected*, and *New_Themes*.")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
