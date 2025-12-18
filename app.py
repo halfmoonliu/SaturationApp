@@ -121,8 +121,8 @@ else:
     st.subheader("Expected CSV Format")
     example_data = {
         'Interview_Number': [1, 2, 3, 4, 5],
-        'Concepts_Collected': [10, 15, 12, 18, 14],
-        'New_Concepts': [10, 8, 5, 10, 6]
+        'Themes_Collected': [10, 15, 12, 18, 14],
+        'New_Themes': [10, 8, 5, 10, 6]
     }
     example_df = pd.DataFrame(example_data)
     example_df['Cumulative_Unique_Themes'] = example_df['New_Themes'].cumsum()
